@@ -1,39 +1,30 @@
-# Конфигурация аукциона
 auction:
-  url: "https://auction-site.com/lot/123"
+  bid_delay: 100
   price_limit: 1000000
-  bid_delay: 100  # ms
-  refresh_interval: 200  # ms
+  refresh_interval: 200
   selectors:
-    bid_button: "button.bid-button:not([disabled])"
-    timer: ".auction-timer"
-    status: ".auction-status"
-    sign_data: "#signData"
-    signature_input: "#signatureInput"
-
-# Настройки NCALayer
-ncalayer:
-  port: 13579
-  storage: "PKCS12"
-  password: ""
-  timeout: 30000
-
-# Telegram уведомления
-telegram:
-  enabled: true
-  bot_token: "YOUR_BOT_TOKEN"
-  chat_id: "YOUR_CHAT_ID"
-
-# Логирование
-logging:
-  level: "INFO"
-  screenshots: true
-  screenshots_path: "screenshots"
-  log_file: "auction_bot.log"
-  max_log_size: 10485760  # 10MB
-
-# Настройки браузера
+    bid_button: button.bid-button:not([disabled])
+    sign_data: '#signData'
+    signature_input: '#signatureInput'
+    status: .auction-status
+    timer: .auction-timer
+  url: https://auction-site.com/lot/123
 browser:
   headless: false
   timeout: 30000
-  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+  user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+logging:
+  level: INFO
+  log_file: auction_bot.log
+  max_log_size: 10485760
+  screenshots: true
+  screenshots_path: screenshots
+ncalayer:
+  password: ''
+  port: 13579
+  storage: PKCS12
+  timeout: 30000
+telegram:
+  bot_token: YOUR_BOT_TOKEN
+  chat_id: YOUR_CHAT_ID
+  enabled: false

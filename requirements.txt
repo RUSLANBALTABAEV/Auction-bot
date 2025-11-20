@@ -1,8 +1,12 @@
-playwright==1.40.0
-python-telegram-bot==20.7
-PyYAML==6.0.1
-PyQt6==6.6.1
-aiohttp==3.9.1
-pytest==7.4.3
-pytest-asyncio==0.21.1
-pyinstaller==5.13.0
+# Основные зависимости
+playwright
+python-telegram-bot
+PyYAML
+aiohttp
+pytest
+pytest-asyncio
+pyinstaller
+
+# Графические интерфейсы (опционально)
+PyQt6
+qasync

@@ -5,6 +5,7 @@ import asyncio
 import sys
 import os
 from bot.auction_bot import AuctionBot
+from config_manager import ConfigManager
 
 
 async def run_bot_profile(profile_name):
@@ -18,7 +19,8 @@ async def run_bot_profile(profile_name):
     print(f"Запуск бота с профилем: {profile_name}")
     
     try:
-        bot = AuctionBot(config_file)
+        config_manager = ConfigManager(config_file)
+        bot = AuctionBot(config_manager)
         await bot.start_monitoring()
     except KeyboardInterrupt:
         print("\nОстановка по команде пользователя")

@@ -4,6 +4,7 @@
 import pytest
 import asyncio
 from bot.auction_bot import AuctionBot
+from config_manager import ConfigManager
 
 
 class TestAuctionBot:
@@ -12,7 +13,8 @@ class TestAuctionBot:
     @pytest.fixture
     async def bot(self):
         """Создание экземпляра бота для тестов"""
-        bot = AuctionBot("test_config.yaml")
+        config_manager = ConfigManager()
+        bot = AuctionBot(config_manager)
         yield bot
         if bot.browser:
             await bot.browser.close()

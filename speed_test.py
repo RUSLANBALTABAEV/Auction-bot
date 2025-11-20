@@ -5,6 +5,7 @@ import asyncio
 import time
 import statistics
 from bot.auction_bot import AuctionBot
+from config_manager import ConfigManager
 
 
 class SpeedTester:
@@ -50,7 +51,8 @@ class SpeedTester:
                 # Имитация подписи
                 await asyncio.sleep(0.05)
         
-        return TestAuctionBot(self.config_path)
+        config_manager = ConfigManager(self.config_path)
+        return TestAuctionBot(config_manager)
     
     async def measure_reaction_time(self, bot):
         """Измерение времени реакции"""

@@ -3,7 +3,6 @@
 """
 import asyncio
 import time
-import yaml
 import logging
 from playwright.async_api import async_playwright
 import os
@@ -16,9 +15,9 @@ from bot.ncalayer_client import NCALayerClient
 class AuctionBot:
     """Класс бота для автоматической подачи ставок на аукционе"""
     
-    def __init__(self, config_path="config.yaml"):
-        self.config_path = config_path
-        self.load_config()
+    def __init__(self, config_manager):
+        self.config_manager = config_manager
+        self.config = config_manager.config
         self.setup_directories()
         self.setup_logging()
         self.setup_notifiers()
@@ -30,16 +29,6 @@ class AuctionBot:
         self.bid_submitted = False
         self.start_time = None
         
-    def load_config(self):
-        """Загрузка конфигурации из YAML файла"""
-        try:
-            with open(self.config_path, 'r', encoding='utf-8') as f:
-                self.config = yaml.safe_load(f)
-            logging.info(f"Конфигурация загружена из {self.config_path}")
-        except Exception as e:
-            logging.error(f"Ошибка загрузки конфигурации: {e}")
-            raise
-    
     def setup_directories(self):
         """Создание необходимых директорий"""
         os.makedirs(self.config['logging']['screenshots_path'], exist_ok=True)
@@ -56,6 +45,12 @@ class AuctionBot:
             ]
         )
         self.logger = logging.getLogger(__name__)
+        
+        # Логируем информацию о конфигурации
+        self.logger.info("Бот инициализирован с конфигурацией:")
+        self.logger.info(f"URL: {self.config['auction']['url']}")
+        self.logger.info(f"Лимит цены: {self.config['auction']['price_limit']:,}")
+        self.logger.info(f"Telegram: {'Включен' if self.config['telegram']['enabled'] else 'Выключен'}")
     
     def setup_notifiers(self):
         """Настройка системы уведомлений"""

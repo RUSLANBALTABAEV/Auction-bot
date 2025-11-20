@@ -20,8 +20,9 @@ pip install -r requirements.txt
 
 if errorlevel 1 (
     echo ОШИБКА: Не удалось установить зависимости!
-    pause
-    exit /b 1
+    echo Попытка установки по отдельности...
+    pip install playwright python-telegram-bot PyYAML aiohttp pytest pytest-asyncio pyinstaller
+    pip install PyQt6 qasync
 )
 
 echo Установка браузера для Playwright...
@@ -31,6 +32,7 @@ echo Создание необходимых директорий...
 if not exist screenshots mkdir screenshots
 if not exist logs mkdir logs
 if not exist configs mkdir configs
+if not exist gui mkdir gui
 
 echo Копирование конфигурационных файлов...
 copy config.yaml configs\config_default.yaml >nul 2>&1
@@ -38,9 +40,14 @@ copy config.yaml configs\config_default.yaml >nul 2>&1
 echo ========================================
 echo    УСТАНОВКА ЗАВЕРШЕНА!
 echo ========================================
-echo Доступные команды:
-echo   python main.py --gui      - запуск с интерфейсом
-echo   python main.py --help     - справка
-echo   python run_bot.py default - быстрый запуск
+echo Доступные режимы запуска:
+echo   python main.py --gui-pyqt  - PyQt6 графический интерфейс
+echo   python main.py --gui-tk    - Tkinter графический интерфейс  
+echo   python main.py --edit-config - Консольный режим
+echo   python main.py --help      - Справка
+echo.
+echo Установленные версии:
+python -c "import PyQt6; print(f'PyQt6: {PyQt6.QtCore.QT_VERSION_STR}')" 2>nul || echo PyQt6: не установлен
+python -c "import playwright; print(f'Playwright: {playwright.__version__}')" 2>nul || echo Playwright: не установлен
 echo.
 pause
