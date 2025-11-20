@@ -1,0 +1,113 @@
+# Временные файлы редакторов и ОС
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Файлы кэша Python
+__pycache__/
+*.py[cod]
+*$py.class
+utlis/__pycache__/*
+utlis/*.pyc
+
+# Дистрибутивы и установочные файлы
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Виртуальное окружение (раскомментируй если нужно)
+# venv/
+# env/
+# .venv
+
+# Файлы настроек IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Файлы журналов и БД
+*.log
+*.sql
+*.sqlite
+
+# Файлы покрытия кода
+.coverage
+htmlcov/
+.coverage.*
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Файлы окружения
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Пакеты setuptools
+docs/_build
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# PyBuilder
+target/
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# celery
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.jsonx
